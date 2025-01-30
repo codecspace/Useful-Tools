@@ -13,7 +13,6 @@
             --secondary: #a855f7;
             --text: #f8f8f8;
             --text-muted: #888;
-            --glow: rgba(124, 58, 237, 0.4);
         }
 
         * {
@@ -63,7 +62,6 @@
             position: relative;
             display: inline-block;
             animation: float 3s ease-in-out infinite;
-            text-shadow: 0 4px 24px rgba(124, 58, 237, 0.3);
         }
 
         .reputation-note {
@@ -101,28 +99,9 @@
             box-shadow: 0 8px 32px rgba(0, 0, 0, 0.2);
         }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            inset: 0;
-            background: linear-gradient(
-                45deg,
-                transparent 0%,
-                var(--glow) 50%,
-                transparent 100%
-            );
-            opacity: 0;
-            transition: opacity 0.4s ease;
-            z-index: -1;
-        }
-
         .card:hover {
-            transform: translateY(-6px) scale(1.02);
-            box-shadow: 0 12px 48px rgba(124, 58, 237, 0.3);
-        }
-
-        .card:hover::before {
-            opacity: 0.2;
+            transform: translateY(-4px);
+            box-shadow: 0 12px 48px rgba(0, 0, 0, 0.3);
         }
 
         .card-header {
@@ -177,9 +156,9 @@
 
         .link-item:hover {
             transform: translateX(8px);
-            background: linear-gradient(90deg, rgba(124, 58, 237, 0.15) 0%, rgba(124, 58, 237, 0.05) 100%);
-            border-color: rgba(124, 58, 237, 0.4);
-            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.2);
+            background: linear-gradient(90deg, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
+            border-color: rgba(124, 58, 237, 0.3);
+            box-shadow: 0 4px 16px rgba(124, 58, 237, 0.1);
         }
 
         .link-item a {
@@ -244,37 +223,15 @@
             width: 200%;
             height: 200%;
             background: 
-                radial-gradient(circle at 70% 20%, rgba(124, 58, 237, 0.15), transparent 25%),
-                radial-gradient(circle at 30% 80%, rgba(168, 85, 247, 0.15), transparent 25%);
-            animation: gradientMove 30s linear infinite;
+                radial-gradient(circle at 70% 20%, rgba(124, 58, 237, 0.1), transparent 25%),
+                radial-gradient(circle at 30% 80%, rgba(168, 85, 247, 0.1), transparent 25%);
+            animation: gradientMove 40s linear infinite;
             z-index: 1;
         }
 
         @keyframes gradientMove {
             0% { transform: rotate(0deg); }
             100% { transform: rotate(360deg); }
-        }
-
-        .particles {
-            position: fixed;
-            width: 100%;
-            height: 100%;
-            z-index: 1;
-            pointer-events: none;
-        }
-
-        .particle {
-            position: absolute;
-            background: var(--secondary);
-            border-radius: 50%;
-            opacity: 0.4;
-            animation: particleFloat 8s infinite linear;
-        }
-
-        @keyframes particleFloat {
-            0% { transform: translateY(0) translateX(0); opacity: 0; }
-            50% { opacity: 0.5; }
-            100% { transform: translateY(-100vh) translateX(50vw); opacity: 0; }
         }
 
         @media (max-width: 768px) {
@@ -287,7 +244,6 @@
 </head>
 <body>
     <div class="gradient-bg"></div>
-    <div class="particles" id="particles"></div>
     
     <div class="container">
         <header>
@@ -485,25 +441,6 @@
             activeCard = card;
         }
 
-        // Particle system
-        function createParticles() {
-            const particlesEl = document.getElementById('particles');
-            const particleCount = 80;
-            
-            for (let i = 0; i < particleCount; i++) {
-                const particle = document.createElement('div');
-                particle.className = 'particle';
-                particle.style.cssText = `
-                    left: ${Math.random() * 100}%;
-                    width: ${Math.random() * 4 + 2}px;
-                    height: ${Math.random() * 4 + 2}px;
-                    animation-delay: ${Math.random() * 8}s;
-                `;
-                particlesEl.appendChild(particle);
-            }
-        }
-
-        document.addEventListener('DOMContentLoaded', createParticles);
         document.addEventListener('click', (event) => {
             if (!event.target.closest('.card-header') && activeCard) {
                 activeCard.classList.remove('active');
