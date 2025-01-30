@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>// Nexus Tools</title>
+    <title>🕸️ Nexus Tools</title>
     <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
     <style>
         :root {
@@ -39,7 +39,7 @@
 
         header {
             text-align: center;
-            margin-bottom: 3rem;
+            margin-bottom: 2rem;
             opacity: 0;
             animation: fadeIn 0.8s ease-out forwards;
         }
@@ -52,6 +52,14 @@
             background: linear-gradient(45deg, #7c3aed, #a855f7);
             -webkit-background-clip: text;
             -webkit-text-fill-color: transparent;
+        }
+
+        .reputation-note {
+            color: var(--text-muted);
+            font-size: 0.9em;
+            margin-top: -1rem;
+            margin-bottom: 2rem;
+            opacity: 0.7;
         }
 
         .grid {
@@ -73,24 +81,6 @@
             box-shadow: 0 8px 24px rgba(0, 0, 0, 0.3);
         }
 
-        .card a {
-            color: inherit;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 1rem;
-        }
-
-        .card h3 {
-            font-weight: 500;
-            margin-bottom: 0.25rem;
-        }
-
-        .card p {
-            color: var(--text-muted);
-            font-size: 0.9em;
-        }
-
         .badge {
             font-size: 0.8em;
             padding: 0.25em 0.75em;
@@ -98,6 +88,29 @@
             background: rgba(124, 58, 237, 0.15);
             color: var(--primary);
             display: inline-block;
+            margin-bottom: 0.8rem;
+        }
+
+        .card h3 {
+            font-weight: 500;
+            margin-bottom: 0.25rem;
+        }
+
+        .card a {
+            color: inherit;
+            text-decoration: none;
+            display: block;
+            padding: 0.5rem 0;
+            transition: opacity 0.2s ease;
+        }
+
+        .card a:hover {
+            opacity: 0.8;
+        }
+
+        .star {
+            color: #eab308;
+            margin-left: 4px;
         }
 
         @keyframes fadeIn {
@@ -111,43 +124,51 @@
         <header>
             <h1>🕸️ Nexus Tools</h1>
             <p>Curated development & design resources</p>
+            <div class="reputation-note">⭐ = highly reputable</div>
         </header>
 
         <div class="grid">
-            <!-- Development Tools -->
+            <!-- Bypassing Card -->
             <div class="card">
-                <a href="#" target="_blank">
-                    <div>
-                        <span class="badge">DEV</span>
-                        <h3>JSON Formatter</h3>
-                        <p>Validate and format JSON data</p>
-                    </div>
-                </a>
+                <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">BYPASS</span>
+                <h3>Ad-links Bypasser</h3>
+                <a href="https://bypass.link/" target="_blank">bypass.link<span class="star">⭐</span></a>
+                <a href="https://bypass.city/" target="_blank">bypass.city</a>
+                <a href="https://bypass.vip/" target="_blank">bypass.vip</a>
             </div>
 
-            <!-- Design Tools -->
+            <!-- Safety Card -->
             <div class="card">
-                <a href="#" target="_blank">
-                    <div>
-                        <span class="badge" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">DESIGN</span>
-                        <h3>Color Contrast</h3>
-                        <p>Check WCAG compliance</p>
-                    </div>
-                </a>
+                <span class="badge" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">SAFETY</span>
+                <h3>Exploit Verification</h3>
+                <a href="https://whatexpsare.online/" target="_blank">Whatexpsareonline</a>
+                <a href="https://voxlis.net/" target="_blank">voxlis.net 🛡️</a>
             </div>
 
-            <!-- Utilities -->
+            <!-- Free Stuff Card -->
             <div class="card">
-                <a href="#" target="_blank">
-                    <div>
-                        <span class="badge" style="background: rgba(234, 179, 8, 0.15); color: #eab308;">UTIL</span>
-                        <h3>Base64 Encode</h3>
-                        <p>Quick text conversion</p>
-                    </div>
-                </a>
+                <span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">FREE</span>
+                <h3>Movies/Shows</h3>
+                <a href="https://345movies.com/movies" target="_blank">345movies<span class="star">⭐</span></a>
+                <a href="https://cinema.7xtream.com/" target="_blank">7x Stream<span class="star">⭐</span></a>
+                <a href="https://broflix.cc/" target="_blank">Broflix<span class="star">⭐</span></a>
             </div>
 
-            <!-- Add more cards following the same structure -->
+            <!-- Anime Card -->
+            <div class="card">
+                <span class="badge" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">ANIME</span>
+                <h3>Free Streaming</h3>
+                <a href="https://animepahe.ru/" target="_blank">AnimePahe</a>
+                <a href="https://hianime.to/" target="_blank">hianime<span class="star">⭐</span></a>
+                <a href="https://www.miruro.tv/" target="_blank">miruro<span class="star">⭐</span></a>
+            </div>
+
+            <!-- Cracks Card -->
+            <div class="card">
+                <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">CRACKS</span>
+                <h3>Safe Software</h3>
+                <a href="https://cracksurl.com/" target="_blank">CracksURL<span class="star">⭐</span></a>
+            </div>
         </div>
     </div>
 </body>
