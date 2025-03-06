@@ -328,21 +328,49 @@
     0%, 100% { transform: translateY(0); }
     50% { transform: translateY(-5px); }
 }
+.safety-link {
+    font-size: 0.85em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.9s forwards;
+}
+
+.verified-link {
+    color: #22c55e; /* Green for safety */
+    text-decoration: none;
+    transition: color 0.3s ease, transform 0.3s ease;
+    position: relative;
+    display: inline-block;
+    animation: breatheGlow 2s ease-in-out infinite; /* Breathing glow effect */
+}
+
+.verified-link:hover {
+    color: #16a34a; /* Darker green on hover */
+    transform: translateX(3px);
+    text-shadow: 0 0 5px rgba(34, 197, 94, 0.8); /* Stronger glow on hover */
+}
+
+@keyframes breatheGlow {
+    0%, 100% { text-shadow: 0 0 5px rgba(34, 197, 94, 0.5), 0 0 10px rgba(34, 197, 94, 0.3); }
+    70% { text-shadow: 0 0 12px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.6); }
+}
     </style>
 </head>
 <body>
     <div class="gradient-bg"></div>
     <div class="container">
-<header>
-    <h1> PLUH Tools🛠️</h1>
-    <div class="reputation-note">
-        ⭐ = highly reputable • Curated security & privacy resources
-    </div>
-  <p class="developer-link">Developed by .<strong><em>remindme</em></strong>. aka <a href="#" onclick="openDeveloperPopup(); return false;" class="animated-link">  ❤️Lerps(PLUH)❤️ ᴄʟɪᴄᴋ ᴍᴇ <span class="arrow">→</span></a></p>
-
-</header>
+        <header>
+            <h1>PLUH Tools🛠️</h1>
+            <div class="reputation-note">
+                ⭐ = highly reputable • Curated security & privacy resources
+            </div>
+            <p class="developer-link">Developed by .<strong><em>remindme</em></strong>. aka <a href="#" onclick="openDeveloperPopup(); return false;" class="animated-link">❤️Lerps(PLUH)❤️ ᴄʟɪᴄᴋ ᴍᴇ <span class="arrow">→</span></a></p>
+            <p class="safety-link">100% safe <a href="https://www.virustotal.com/gui/file/3120695db09c809516c2ec6bd94d2455bf7f7bd8eb71b2bd598d0c727aaaa41b/detection" target="_blank" class="verified-link">VirusTotal verified 💚 Click here to check</a></p>
+        </header>
         <div class="grid">
-            <!-- Bypass Card -->
+            <!-- Rest of your cards remain unchanged -->
+            
             <div class="card">
                 <div class="card-header" onclick="toggleDropdown(this)">
                     <div>
