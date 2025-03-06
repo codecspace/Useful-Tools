@@ -284,17 +284,63 @@
             0% { transform: translateX(-100%); }
             100% { transform: translateX(100%); }
         }
+.developer-link {
+    font-size: 0.9em;
+    color: var(--text-muted);
+    margin-top: 0.5rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.6s forwards;
+}
+
+.developer-link a {
+    color: var(--text);
+    text-decoration: none;
+    transition: color 0.3s ease;
+}
+
+.developer-link a:hover {
+    color: var(--primary);
+}
+
+.animated-link {
+    position: relative;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+    transition: transform 0.3s ease, color 0.3s ease;
+}
+
+.animated-link:hover {
+    transform: scale(1.05);
+    color: var(--primary);
+    text-shadow: 0 0 5px var(--primary);
+}
+
+.animated-link .arrow {
+    display: inline-block;
+    transition: transform 0.3s ease;
+}
+
+.animated-link:hover .arrow {
+    transform: translateX(5px);
+}
+
+@keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+}
     </style>
 </head>
 <body>
     <div class="gradient-bg"></div>
     <div class="container">
-        <header>
-            <h1>PLUH Tools</h1>
-            <div class="reputation-note">
-                ⭐ = highly reputable • Curated security & privacy resources
-            </div>
-        </header>
+<header>
+    <h1>PLUH Tools</h1>
+    <div class="reputation-note">
+        ⭐ = highly reputable • Curated security & privacy resources
+    </div>
+  <p class="developer-link">Developed by .<strong><em>remindme</em></strong>. aka <a href="#" onclick="openDeveloperPopup(); return false;" class="animated-link">❤️Lerps(PLUH)❤️ <span class="arrow">→</span></a></p>
+
+</header>
         <div class="grid">
             <!-- Bypass Card -->
             <div class="card">
@@ -448,25 +494,29 @@
         </div>
     </div>
     <script>
-        let activeCard = null;
-        function toggleDropdown(header) {
-            const card = header.parentElement;
-            const dropdown = card.querySelector('.dropdown');
-            const arrow = card.querySelector('.arrow');
-            if (activeCard === card) {
-                card.classList.remove('active');
-                dropdown.style.maxHeight = '0';
-                activeCard = null;
-                return;
-            }
-            if (activeCard) {
-                activeCard.classList.remove('active');
-activeCard.querySelector('.dropdown').style.maxHeight = '0';
-            }
-            card.classList.add('active');
-            dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-            activeCard = card;
+    let activeCard = null;
+    function toggleDropdown(header) {
+        const card = header.parentElement;
+        const dropdown = card.querySelector('.dropdown');
+        const arrow = card.querySelector('.arrow');
+        if (activeCard === card) {
+            card.classList.remove('active');
+            dropdown.style.maxHeight = '0';
+            activeCard = null;
+            return;
         }
-    </script>
+        if (activeCard) {
+            activeCard.classList.remove('active');
+            activeCard.querySelector('.dropdown').style.maxHeight = '0';
+        }
+        card.classList.add('active');
+        dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+        activeCard = card;
+    }
+
+    function openDeveloperPopup() {
+        window.open('https://guns.lol/lerps', 'developerPopup', 'width=600,height=400,scrollbars=yes,resizable=yes');
+    }
+</script>
 </body>
 </html>
