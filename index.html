@@ -3,599 +3,661 @@
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
   <meta property="og:title" content="🔧 PLUH Tools">
   <meta property="og:description" content="Curated Piracy Tools, Movies, Scripts, Ad link bypassers, Exploits verifications, Windows activators, anime and much more (Open Source) 😊">
   <meta property="og:image" content="https://media0.giphy.com/media/v1.Y2lkPTc5MGI3NjExZW92b2NpaHJza2FiN2tieWo3bHlyNmw1dDBjenIydWx6eHl5aWRmayZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/w3NFibYdyS54waCj9W/giphy.gif">
   <meta property="og:url" content="https://codecspace.github.io/Useful-Tools/">
   <meta property="og:type" content="website">
-
   <title>🔧 PLUH Tools</title>
   <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
   <style>
-    :root {
-      --bg: #0a0a0a;
-      --surface: rgba(21, 21, 21, 0.8);
-      --primary: #7c3aed;
-      --text: #e8e8e8;
-      --text-muted: #888;
-    }
+  :root {
+    --bg: #0a0a0a;
+    --surface: rgba(21, 21, 21, 0.8);
+    --primary: #7c3aed;
+    --text: #e8e8e8;
+    --text-muted: #888;
+  }
 
-    * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-    }
-    body {
-      background: var(--bg);
-      color: var(--text);
-      font-family: 'Inter', sans-serif;
-      line-height: 1.6;
-      min-height: 100vh;
-      display: flex;
-      flex-direction: column;
-      padding: 2rem;
-      position: relative;
-      overflow-x: hidden;
-    }
+  * {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+  }
 
-    .container {
-            max-width: 800px;
-            margin: 0 auto;
-            width: 100%;
-            position: relative;
-            z-index: 2;
-        }
+  body {
+    background: var(--bg);
+    color: var(--text);
+    font-family: 'Inter', sans-serif;
+    line-height: 1.6;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    padding: 2rem;
+    position: relative;
+    overflow-x: hidden;
+  }
 
-        header {
-            text-align: center;
-            margin-bottom: 3rem;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out forwards;
-        }
+  .container {
+    max-width: 800px;
+    margin: 0 auto;
+    width: 100%;
+    position: relative;
+    z-index: 2;
+  }
 
-        h1 {
-            font-weight: 600;
-            font-size: 3rem;
-            letter-spacing: -0.05em;
-            margin-bottom: 0.5rem;
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            position: relative;
-            display: inline-block;
-            animation: float 3s ease-in-out infinite;
-        }
+  header {
+    text-align: center;
+    margin-bottom: 4rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out forwards;
+  }
 
-        @keyframes float {
-            0%, 100% { transform: translateY(0) rotate(0deg); }
-            50% { transform: translateY(-8px) rotate(0.5deg); }
-        }
+  h1 {
+    font-weight: 600;
+    font-size: 3rem;
+    letter-spacing: -0.05em;
+    margin-bottom: 0.5rem;
+    background: linear-gradient(45deg, #7c3aed, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    position: relative;
+    display: inline-block;
+    animation: float 3s ease-in-out infinite;
+  }
 
-        .reputation-note {
-            color: var(--text-muted);
-            font-size: 0.95em;
-            margin-top: 0.75rem;
-            opacity: 0;
-            animation: fadeIn 0.8s ease-out 0.3s forwards;
-        }
+  h1::before, h1::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    width: 80px;
+    height: 2px;
+    background: #7c3aed;
+    opacity: 0;
+    animation: lineGrow 1s ease-out 0.5s forwards;
+  }
 
-        .grid {
-            display: flex;
-            flex-direction: column;
-            gap: 1.5rem;
-            position: relative;
-        }
+  h1::before {
+    left: -90px;
+  }
 
-        .card {
-            background: var(--surface);
-            border-radius: 16px;
-            border: 1px solid rgba(255, 255, 255, 0.1);
-            backdrop-filter: blur(12px);
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-            position: relative;
-            opacity: 0;
-            animation: cardEntrance 0.6s ease forwards;
-        }
+  h1::after {
+    right: -90px;
+  }
 
-        .card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: -100%;
-            width: 50%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
-            transition: 0.5s;
-        }
+  @keyframes float {
+    0%, 100% { transform: translateY(0) rotate(0deg); }
+    50% { transform: translateY(-8px) rotate(0.5deg); }
+  }
 
-        .card:hover::before {
-            left: 100%;
-        }
+  @keyframes lineGrow {
+    0% { width: 0; opacity: 0; }
+    100% { width: 80px; opacity: 1; }
+  }
 
-        .card-header {
-            padding: 1.5rem;
-            cursor: pointer;
-            transition: background 0.2s ease;
-            position: relative;
-            display: flex;
-            align-items: center;
-            justify-content: space-between;
-        }
+  .reputation-note {
+    color: var(--text-muted);
+    font-size: 0.95em;
+    margin-top: 0.75rem;
+    margin-bottom: 1rem;
+    opacity: 0;
+    animation: fadeIn 0.8s ease-out 0.3s forwards;
+  }
 
-        .card-header:hover {
-            background: rgba(255, 255, 255, 0.03);
-        }
+  .grid {
+    display: flex;
+    flex-direction: column;
+    gap: 1.5rem;
+    position: relative;
+  }
 
-        .badge {
-            font-size: 0.75em;
-            padding: 0.3em 1em;
-            border-radius: 20px;
-            display: inline-block;
-            margin-bottom: 0.8rem;
-            backdrop-filter: blur(4px);
-            border: 1px solid rgba(255, 255, 255, 0.1);
-        }
+  .card {
+    background: linear-gradient(45deg, rgba(21, 21, 21, 0.9), rgba(21, 21, 21, 0.9)),
+                linear-gradient(45deg, rgba(124, 58, 237, 0.05), rgba(168, 85, 247, 0.05));
+    border-radius: 16px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    backdrop-filter: blur(12px);
+    transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+    overflow: hidden;
+    position: relative;
+    opacity: 0;
+    animation: cardEntrance 0.6s ease forwards;
+    box-shadow: inset 0 0 10px rgba(124, 58, 237, 0.1);
+  }
 
-        .dropdown {
-            max-height: 0;
-            overflow: hidden;
-            transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-        }
+  .card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: -100%;
+    width: 50%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(255, 255, 255, 0.05), transparent);
+    transition: 0.5s;
+  }
 
-        .dropdown-content {
-            padding: 0 1.5rem 1.5rem;
-        }
+  .card:hover::before {
+    left: 100%;
+  }
 
-        .link-item {
-            padding: 0.8rem;
-            margin: 0.5rem 0;
-            border-radius: 8px;
-            transition: all 0.2s ease;
-            position: relative;
-            overflow: hidden;
-            background: rgba(255, 255, 255, 0.02);
-            border: 1px solid rgba(255, 255, 255, 0.05);
-        }
+  .card:hover {
+    transform: scale(1.02);
+    box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2), inset 0 0 15px rgba(124, 58, 237, 0.2);
+    background: linear-gradient(45deg, rgba(21, 21, 21, 0.9), rgba(21, 21, 21, 0.9)),
+                linear-gradient(45deg, rgba(124, 58, 237, 0.1), rgba(168, 85, 247, 0.1));
+    border-color: rgba(124, 58, 237, 0.3);
+  }
 
-        .link-item:hover {
-            transform: translateX(8px);
-            background: rgba(124, 58, 237, 0.1);
-            border-color: rgba(124, 58, 237, 0.3);
-        }
+  .card-header {
+    padding: 1.5rem;
+    cursor: pointer;
+    transition: background 0.2s ease;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+  }
 
-        .link-item a {
-            color: inherit;
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 0.5rem;
-        }
+  .card-header:hover {
+    background: rgba(255, 255, 255, 0.03);
+  }
 
-        .star {
-            color: #eab308;
-            margin-left: 4px;
-            filter: drop-shadow(0 0 4px rgba(234, 179, 8, 0.3));
-        }
+  .badge {
+    font-size: 0.75em;
+    padding: 0.3em 1em;
+    border-radius: 20px;
+    display: inline-block;
+    margin-bottom: 0.8rem;
+    backdrop-filter: blur(4px);
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    text-shadow: 0 0 2px rgba(0, 0, 0, 0.5);
+  }
 
-        .arrow {
-            margin-left: auto;
-            transition: transform 0.3s ease;
-            color: rgba(255, 255, 255, 0.6);
-        }
+  .dropdown {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  }
 
-        .card.active {
-            transform: translateY(-4px);
-            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3);
-        }
+  .dropdown-content {
+    padding: 0 1.5rem 1.5rem;
+  }
 
-        .card.active .arrow {
-            transform: rotate(180deg);
-        }
+  .link-item {
+    padding: 0.8rem;
+    margin: 0.5rem 0;
+    border-radius: 8px;
+    transition: all 0.2s ease;
+    position: relative;
+    overflow: hidden;
+    background: rgba(255, 255, 255, 0.02);
+    border: 1px solid rgba(255, 255, 255, 0.05);
+  }
 
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(20px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+  .link-item:hover {
+    transform: translateX(8px);
+    background: rgba(124, 58, 237, 0.1);
+    border-color: rgba(124, 58, 237, 0.3);
+  }
 
-        @keyframes cardEntrance {
-            from { opacity: 0; transform: translateY(20px) scale(0.95); }
-            to { opacity: 1; transform: translateY(0) scale(1); }
-        }
+  .link-item a {
+    color: inherit;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+    position: relative;
+  }
 
-        .card:nth-child(1) { animation-delay: 0.1s; }
-        .card:nth-child(2) { animation-delay: 0.2s; }
-        .card:nth-child(3) { animation-delay: 0.3s; }
-        .card:nth-child(4) { animation-delay: 0.4s; }
-        .card:nth-child(5) { animation-delay: 0.5s; }
-        .card:nth-child(6) { animation-delay: 0.6s; }
-        .card:nth-child(7) { animation-delay: 0.7s; }
+  .link-item a::after {
+    content: '';
+    position: absolute;
+    bottom: -2px;
+    left: 0;
+    width: 0;
+    height: 2px;
+    background: #7c3aed;
+    transition: width 0.3s ease;
+  }
 
-        .gradient-bg {
-            position: fixed;
-            top: -50%;
-            left: -50%;
-            width: 200%;
-            height: 200%;
-            background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1), transparent 30%);
-            animation: gradientMove 20s linear infinite;
-            z-index: 1;
-        }
+  .link-item:hover a::after {
+    width: 100%;
+  }
 
-        @keyframes gradientMove {
-            0% { transform: rotate(0deg); }
-            100% { transform: rotate(360deg); }
-        }
+  .star {
+    color: #eab308;
+    margin-left: 4px;
+    filter: drop-shadow(0 0 4px rgba(234, 179, 8, 0.3));
+    animation: twinkle 1.5s infinite alternate;
+  }
 
-        @media (max-width: 768px) {
-            body { padding: 1rem; }
-            h1 { font-size: 2.2rem; }
-        }
+  .arrow {
+    margin-left: auto;
+    transition: transform 0.3s ease;
+    color: rgba(255, 255, 255, 0.6);
+  }
 
-        /* New Hover Animations */
-        .card:hover {
-            transform: scale(1.02);
-            box-shadow: 0 8px 32px rgba(124, 58, 237, 0.2);
-        }
+  .card.active {
+    transform: translateY(-4px);
+    box-shadow: 0 12px 24px rgba(0, 0, 0, 0.3), 0 0 15px rgba(124, 58, 237, 0.3);
+  }
 
-        .card:hover .card-header {
-            background: rgba(255, 255, 255, 0.05);
-        }
+  .card.active .arrow {
+    transform: rotate(180deg);
+  }
 
-        .card:hover .arrow {
-            color: #7c3aed;
-        }
+  @keyframes fadeIn {
+    from { opacity: 0; transform: translateY(20px); }
+    to { opacity: 1; transform: translateY(0); }
+  }
 
-        .card:hover h3 {
-            background: linear-gradient(45deg, #7c3aed, #a855f7);
-            -webkit-background-clip: text;
-            background-clip: text;
-            -webkit-text-fill-color: transparent;
-            animation: textGlow 1.5s infinite alternate;
-        }
+  @keyframes cardEntrance {
+    0% { opacity: 0; transform: translateY(20px) scale(0.95); }
+    80% { transform: translateY(-5px) scale(1.02); }
+    100% { opacity: 1; transform: translateY(0) scale(1); }
+  }
 
-        @keyframes textGlow {
-            0% { text-shadow: 0 0 5px rgba(124, 58, 237, 0.3), 0 0 10px rgba(124, 58, 237, 0.3); }
-            100% { text-shadow: 0 0 10px rgba(124, 58, 237, 0.6), 0 0 20px rgba(124, 58, 237, 0.6); }
-        }
+  @keyframes twinkle {
+    0% { transform: scale(1); opacity: 1; }
+    100% { transform: scale(1.2); opacity: 0.8; }
+  }
 
-        .link-item:hover a {
-            color: #7c3aed;
-        }
+  .card:nth-child(1) { animation-delay: 0.2s; }
+  .card:nth-child(2) { animation-delay: 0.4s; }
+  .card:nth-child(3) { animation-delay: 0.6s; }
+  .card:nth-child(4) { animation-delay: 0.8s; }
+  .card:nth-child(5) { animation-delay: 1.0s; }
+  .card:nth-child(6) { animation-delay: 1.2s; }
+  .card:nth-child(7) { animation-delay: 1.4s; }
+  .card:nth-child(8) { animation-delay: 1.6s; }
 
-        .link-item:hover .star {
-            filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
-        }
+  .gradient-bg {
+    position: fixed;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 50% 50%, rgba(124, 58, 237, 0.1), transparent 30%);
+    animation: gradientMove 20s linear infinite;
+    z-index: 1;
+  }
 
-        .link-item:hover::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
-            animation: slide 1.5s infinite;
-        }
+  @keyframes gradientMove {
+    0% { transform: rotate(0deg); }
+    100% { transform: rotate(360deg); }
+  }
 
-        @keyframes slide {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-.developer-link {
+  #progress-bar {
+    position: fixed;
+    top: 0;
+    left: 0;
+    height: 4px;
+    background: #7c3aed;
+    width: 0;
+    z-index: 1000;
+    transition: width 0.1s ease;
+  }
+
+  @media (max-width: 768px) {
+    body { padding: 1rem; }
+    h1 { font-size: 2.2rem; }
+  }
+
+  .card:hover .card-header {
+    background: rgba(255, 255, 255, 0.05);
+  }
+
+  .card:hover .arrow {
+    color: #7c3aed;
+  }
+
+  .card:hover h3 {
+    background: linear-gradient(45deg, #7c3aed, #a855f7);
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    animation: textGlow 1.5s infinite alternate;
+  }
+
+  @keyframes textGlow {
+    0% { text-shadow: 0 0 5px rgba(124, 58, 237, 0.3), 0 0 10px rgba(124, 58, 237, 0.3); }
+    100% { text-shadow: 0 0 10px rgba(124, 58, 237, 0.6), 0 0 20px rgba(124, 58, 237, 0.6); }
+  }
+
+  .link-item:hover a {
+    color: #7c3aed;
+  }
+
+  .link-item:hover .star {
+    filter: drop-shadow(0 0 8px rgba(234, 179, 8, 0.6));
+  }
+
+  .link-item:hover::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: linear-gradient(90deg, transparent, rgba(124, 58, 237, 0.1), transparent);
+    animation: slide 1.5s infinite;
+  }
+
+  @keyframes slide {
+    0% { transform: translateX(-100%); }
+    100% { transform: translateX(100%); }
+  }
+
+  .developer-link {
     font-size: 0.9em;
     color: var(--text-muted);
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     opacity: 0;
     animation: fadeIn 0.8s ease-out 0.6s forwards;
-}
+  }
 
-.developer-link a {
+  .developer-link a {
     color: var(--text);
     text-decoration: none;
     transition: color 0.3s ease;
-}
+  }
 
-.developer-link a:hover {
+  .developer-link a:hover {
     color: var(--primary);
-}
+  }
 
-.animated-link {
+  .animated-link {
     position: relative;
     display: inline-block;
     animation: float 3s ease-in-out infinite;
     transition: transform 0.3s ease, color 0.3s ease;
-}
+  }
 
-.animated-link:hover {
+  .animated-link:hover {
     transform: scale(1.05);
     color: var(--primary);
     text-shadow: 0 0 5px var(--primary);
-}
+  }
 
-.animated-link .arrow {
+  .animated-link .arrow {
     display: inline-block;
     transition: transform 0.3s ease;
-}
+  }
 
-.animated-link:hover .arrow {
+  .animated-link:hover .arrow {
     transform: translateX(5px);
-}
+  }
 
-@keyframes float {
-    0%, 100% { transform: translateY(0); }
-    50% { transform: translateY(-5px); }
-}
-.safety-link {
+  .safety-link {
     font-size: 0.85em;
     color: var(--text-muted);
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     opacity: 0;
     animation: fadeIn 0.8s ease-out 0.9s forwards;
-}
+  }
 
-.verified-link {
-    color: #22c55e; /* Green for safety */
+  .verified-link {
+    color: #22c55e;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
     position: relative;
     display: inline-block;
-    animation: breatheGlow 2s ease-in-out infinite; /* Breathing glow effect */
-}
+    animation: breatheGlow 2s ease-in-out infinite;
+  }
 
-.verified-link:hover {
-    color: #16a34a; /* Darker green on hover */
+  .verified-link:hover {
+    color: #16a34a;
     transform: translateX(3px);
-    text-shadow: 0 0 5px rgba(34, 197, 94, 0.8); /* Stronger glow on hover */
-}
-.safety-link {
+    text-shadow: 0 0 5px rgba(34, 197, 94, 0.8);
+  }
+
+  .tip-link {
     font-size: 0.85em;
     color: var(--text-muted);
-    margin-top: 0.5rem;
-    opacity: 0;
-    animation: fadeIn 0.8s ease-out 0.9s forwards;
-}
-
-.verified-link {
-    color: #22c55e; /* Green for safety */
-    text-decoration: none;
-    transition: color 0.3s ease, transform 0.3s ease;
-    position: relative;
-    display: inline-block;
-    animation: breatheGlow 2s ease-in-out infinite; /* Breathing glow effect */
-}
-
-.verified-link:hover {
-    color: #16a34a; /* Darker green on hover */
-    transform: translateX(3px);
-    text-shadow: 0 0 5px rgba(34, 197, 94, 0.8); /* Stronger glow on hover */
-}
-
-.tip-link {
-    font-size: 0.85em;
-    color: var(--text-muted);
-    margin-top: 0.5rem;
+    margin-top: 0.75rem;
     opacity: 0;
     animation: fadeIn 0.8s ease-out 1.2s forwards;
-}
+  }
 
-.adblocker-link {
-    color: #22c55e; /* Green for safety */
+  .adblocker-link {
+    color: #22c55e;
     text-decoration: none;
     transition: color 0.3s ease, transform 0.3s ease;
     position: relative;
     display: inline-block;
-    animation: breatheGlow 2s ease-in-out infinite; /* Breathing glow effect */
-}
+    animation: breatheGlow 2s ease-in-out infinite;
+  }
 
-.adblocker-link:hover {
-    color: #16a34a; /* Darker green on hover */
+  .adblocker-link:hover {
+    color: #16a34a;
     transform: translateX(3px);
-    text-shadow: 0 0 5px rgba(34, 197, 94, 0.8); /* Stronger glow on hover */
-}
+    text-shadow: 0 0 5px rgba(34, 197, 94, 0.8);
+  }
 
-@keyframes breatheGlow {
+  @keyframes float {
+    0%, 100% { transform: translateY(0); }
+    50% { transform: translateY(-5px); }
+  }
+
+  @keyframes breatheGlow {
     0%, 100% { text-shadow: 0 0 5px rgba(34, 197, 94, 0.5), 0 0 10px rgba(34, 197, 94, 0.3); }
     70% { text-shadow: 0 0 12px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.6); }
-}
-@keyframes breatheGlow {
-    0%, 100% { text-shadow: 0 0 5px rgba(34, 197, 94, 0.5), 0 0 10px rgba(34, 197, 94, 0.3); }
-    70% { text-shadow: 0 0 12px rgba(34, 197, 94, 0.8), 0 0 20px rgba(34, 197, 94, 0.6); }
-}
-    </style>
+  }
+</style>
 </head>
 <body>
-    <div class="gradient-bg"></div>
-    <div class="container">
-        <header>
-            <h1>PLUH Tools🛠️</h1>
-    <div class="reputation-note">
+  <div id="progress-bar"></div>
+  <div class="gradient-bg"></div>
+  <div class="container">
+    <header>
+      <h1>PLUH Tools</h1>
+      <div class="reputation-note">
         ⭐ = highly reputable • Curated security & privacy resources
-    </div>
-    <p class="developer-link">Developed by .<strong><em>remindme</em></strong>. aka <a href="#" onclick="openDeveloperPopup(); return false;" class="animated-link">❤️Lerps(PLUH)❤️ ᴄʟɪᴄᴋ ᴍᴇ <span class="arrow">→</span></a></p>
-    <p class="safety-link">100% safe <a href="https://www.virustotal.com/gui/file/3120695db09c809516c2ec6bd94d2455bf7f7bd8eb71b2bd598d0c727aaaa41b/detection" target="_blank" class="verified-link">VirusTotal verified 💚 Click here to check</a></p>
-    <p class="tip-link">Protect yourself from malicious ads on certain websites by using an ad blocker. <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb" target="_blank" class="adblocker-link">Click here to get one</a></p>
-
-        </header>
-        <div class="grid">
-            <!-- Rest of your cards remain unchanged -->
-            
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">BYPASS</span>
-                        <h3>Ad-links Bypasser 🔓</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://bypass.link/" target="_blank"> bypass.link <span class="star">⭐</span> </a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://bypass.city/" target="_blank">bypass.city</a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://bypass.vip/" target="_blank">bypass.vip</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Safety Card -->
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">SAFETY</span>
-                        <h3>Exploit Verification 🕵️‍♂️</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://whatexpsare.online/" target="_blank">Whatexpsareonline</a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://voxlis.net/" target="_blank">voxlis.net 🛡️</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Free Content Card -->
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">FREE</span>
-                        <h3>Movies & Shows 🍿</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://345movies.com/movies" target="_blank">345movies <span class="star">⭐</span></a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://cinema.7xtream.com/" target="_blank">7x Stream <span class="star">⭐</span></a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://broflix.cc/" target="_blank">Broflix <span class="star">⭐</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Anime Card -->
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">ANIME</span>
-                        <h3>Free Streaming 📺</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://animepahe.ru/" target="_blank">AnimePahe</a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://hianime.to/" target="_blank">hianime <span class="star">⭐</span></a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://www.miruro.tv/" target="_blank">miruro <span class="star">⭐</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Cracks Card -->
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">CRACKS</span>
-                        <h3>Free Cracked Softwares 🐞</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://cracksurl.com/" target="_blank">CracksURL <span class="star">⭐</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Activator Card -->
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">ACTIVATOR</span>
-                        <h3>Windows/Office Activation 🪟</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://massgrave.dev/" target="_blank">Microsoft Activation Scripts (MAS) <span class="star">⭐</span></a>
-                        </div>
-                    </div>
-                </div>
-            </div>
-            <!-- Scripts Card -->
-            <div class="card">
-                <div class="card-header" onclick="toggleDropdown(this)">
-                    <div>
-                        <span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">SCRIPTS</span>
-                        <h3>Roblox Script 🔎</h3>
-                    </div>
-                    <span class="arrow">▼</span>
-                </div>
-                <div class="dropdown">
-                    <div class="dropdown-content">
-                        <div class="link-item">
-                            <a href="https://scriptblox.com/" target="_blank">Scriptblox <span class="star">⭐</span></a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://rscripts.net/" target="_blank">Rscripts <span class="star">⭐</span></a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://robloxscripts.com/" target="_blank">Roblox Scripts <span class="star">⭐</span></a>
-                        </div>
-                        <div class="link-item">
-                            <a href="https://rbxscript.com/posts/roblox/scripts" target="_blank">RbxScripts ✔️</a>
-                        </div>
-                    </div>
-                </div>
-            </div>
+      </div>
+      <p class="developer-link">Developed by .<strong><em>remindme</em></strong>. aka <a href="#" onclick="openDeveloperPopup(); return false;" class="animated-link">❤️Lerps(PLUH)❤️ ᴄʟɪᴄᴋ ᴍᴇ <span class="arrow">→</span></a></p>
+      <p class="safety-link">100% safe <a href="https://www.virustotal.com/gui/file/3120695db09c809516c2ec6bd94d2455bf7f7bd8eb71b2bd598d0c727aaaa41b/detection" target="_blank" class="verified-link">VirusTotal verified 💚 Click here to check</a></p>
+      <p class="tip-link">Protect yourself from malicious ads on certain websites by using an ad blocker. <a href="https://chromewebstore.google.com/detail/ddkjiahejlhfcafbddmgiahcphecmpfh?utm_source=item-share-cb" target="_blank" class="adblocker-link">Click here to get one</a></p>
+    </header>
+    <div class="grid">
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Ad-links Bypasser dropdown">
+          <div>
+            <span class="badge" style="background: rgba(139, 92, 246, 0.15); color: #8b5cf6;">BYPASS</span>
+            <h3>Ad-links Bypasser 🔓</h3>
+          </div>
+          <span class="arrow">▼</span>
         </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://bypass.link/" target="_blank">bypass.link <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://bypass.city/" target="_blank">bypass.city</a>
+            </div>
+            <div class="link-item">
+              <a href="https://bypass.vip/" target="_blank">bypass.vip</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Games dropdown">
+          <div>
+            <span class="badge" style="background: rgba(234, 179, 8, 0.15); color: #eab308;">FREE</span>
+            <h3>Games 🎮</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://ankergames.net/" target="_blank">Anker Games <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://gamebounty.world/" target="_blank">Game Bounty <span class="star">⭐</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Movies & Shows dropdown">
+          <div>
+            <span class="badge" style="background: rgba(249, 115, 22, 0.15); color: #f97316;">FREE</span>
+            <h3>Movies & Shows 🍿</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://345movies.com/movies" target="_blank">345movies <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://cinema.7xtream.com/" target="_blank">7x Stream <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://broflix.cc/" target="_blank">Broflix <span class="star">⭐</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Exploit Verification dropdown">
+          <div>
+            <span class="badge" style="background: rgba(34, 197, 94, 0.15); color: #22c55e;">SAFETY</span>
+            <h3>Exploit Verification 🕵️‍♂️</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://whatexpsare.online/" target="_blank">Whatexpsareonline</a>
+            </div>
+            <div class="link-item">
+              <a href="https://voxlis.net/" target="_blank">voxlis.net 🛡️</a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Free Streaming (Anime) dropdown">
+          <div>
+            <span class="badge" style="background: rgba(236, 72, 153, 0.15); color: #ec4899;">ANIME</span>
+            <h3>Free Streaming 📺</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://animepahe.ru/" target="_blank">AnimePahe</a>
+            </div>
+            <div class="link-item">
+              <a href="https://hianime.to/" target="_blank">hianime <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://www.miruro.tv/" target="_blank">miruro <span class="star">⭐</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Free Cracked Softwares dropdown">
+          <div>
+            <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">CRACKS</span>
+            <h3>Free Cracked Softwares 🐞</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://cracksurl.com/" target="_blank">CracksURL <span class="star">⭐</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Windows/Office Activation dropdown">
+          <div>
+            <span class="badge" style="background: rgba(59, 130, 246, 0.15); color: #3b82f6;">ACTIVATOR</span>
+            <h3>Windows/Office Activation 🪟</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://massgrave.dev/" target="_blank">Microsoft Activation Scripts (MAS) <span class="star">⭐</span></a>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="card">
+        <div class="card-header" onclick="toggleDropdown(this)" aria-label="Toggle Roblox Script dropdown">
+          <div>
+            <span class="badge" style="background: rgba(168, 85, 247, 0.15); color: #a855f7;">SCRIPTS</span>
+            <h3>Roblox Script 🔎</h3>
+          </div>
+          <span class="arrow">▼</span>
+        </div>
+        <div class="dropdown">
+          <div class="dropdown-content">
+            <div class="link-item">
+              <a href="https://scriptblox.com/" target="_blank">Scriptblox <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://rscripts.net/" target="_blank">Rscripts <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://robloxscripts.com/" target="_blank">Roblox Scripts <span class="star">⭐</span></a>
+            </div>
+            <div class="link-item">
+              <a href="https://rbxscript.com/posts/roblox/scripts" target="_blank">RbxScripts ✔️</a>
+            </div>
+          </div>
+        </div>
+      </div>
     </div>
-    <script>
+    <footer style="text-align: center; margin-top: 3rem; color: var(--text-muted); font-size: 0.9em;">
+      <p>© 2025 PLUH Tools by Lerps. All rights reserved.</p>
+      <a href="#" onclick="window.scrollTo({top: 0, behavior: 'smooth'}); return false;" style="color: #7c3aed; text-decoration: none;">Back to Top</a>
+    </footer>
+  </div>
+  <script>
     let activeCard = null;
     function toggleDropdown(header) {
-        const card = header.parentElement;
-        const dropdown = card.querySelector('.dropdown');
-        const arrow = card.querySelector('.arrow');
-        if (activeCard === card) {
-            card.classList.remove('active');
-            dropdown.style.maxHeight = '0';
-            activeCard = null;
-            return;
-        }
-        if (activeCard) {
-            activeCard.classList.remove('active');
-            activeCard.querySelector('.dropdown').style.maxHeight = '0';
-        }
-        card.classList.add('active');
-        dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
-        activeCard = card;
+      const card = header.parentElement;
+      const dropdown = card.querySelector('.dropdown');
+      const arrow = card.querySelector('.arrow');
+      if (activeCard === card) {
+        card.classList.remove('active');
+        dropdown.style.maxHeight = '0';
+        activeCard = null;
+        return;
+      }
+      if (activeCard) {
+        activeCard.classList.remove('active');
+        activeCard.querySelector('.dropdown').style.maxHeight = '0';
+      }
+      card.classList.add('active');
+      dropdown.style.maxHeight = dropdown.scrollHeight + 'px';
+      activeCard = card;
     }
 
     function openDeveloperPopup() {
-        window.open('https://guns.lol/lerps', 'developerPopup', 'width=600,height=400,scrollbars=yes,resizable=yes');
+      window.open('https://guns.lol/lerps', 'developerPopup', 'width=600,height=400,scrollbars=yes,resizable=yes');
     }
-</script>
+
+    window.addEventListener('scroll', () => {
+      const scrollTop = document.documentElement.scrollTop || document.body.scrollTop;
+      const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+      const scrollPercentage = (scrollTop / scrollHeight) * 100;
+      document.getElementById('progress-bar').style.width = scrollPercentage + '%';
+    });
+  </script>
 </body>
 </html>
